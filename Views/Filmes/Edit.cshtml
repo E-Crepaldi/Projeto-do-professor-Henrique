@@ -1,0 +1,10 @@
+@model Cine99.Models.Filme
+@{ ViewData["Title"] = "Editar Filme"; }
+<h2>Editar Filme</h2>
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+    @* Todos os mesmos campos do Create.cshtml aqui *@
+    @* (copie e cole o conteúdo do form do Create) *@
+    <button type="submit" class="btn btn-warning">Salvar Alterações</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

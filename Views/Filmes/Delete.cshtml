@@ -1,0 +1,11 @@
+@model Cine99.Models.Filme
+@{ ViewData["Title"] = "Excluir Filme"; }
+<div class="alert alert-danger">
+    <h4>Tem certeza que deseja excluir este filme?</h4>
+    <p><strong>@Model.Nome</strong> — @Model.AnoLancamento</p>
+</div>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Sim, Excluir</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

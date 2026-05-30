@@ -1,0 +1,35 @@
+@model Cine99.Models.Filme
+@{ ViewData["Title"] = "Novo Filme"; }
+<h2>Adicionar Novo Filme</h2>
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+    <div class="mb-3">
+        <label asp-for="Nome" class="form-label"></label>
+        <input asp-for="Nome" class="form-control" />
+        <span asp-validation-for="Nome" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Sinopse" class="form-label"></label>
+        <textarea asp-for="Sinopse" class="form-control" rows="4"></textarea>
+        <span asp-validation-for="Sinopse" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Diretor" class="form-label"></label>
+        <input asp-for="Diretor" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="AnoLancamento" class="form-label"></label>
+        <input asp-for="AnoLancamento" class="form-control" type="number" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="ImagemUrl" class="form-label"></label>
+        <input asp-for="ImagemUrl" class="form-control" />
+        <small class="text-muted">Cole a URL de uma imagem online</small>
+    </div>
+    <div class="mb-3">
+        <label asp-for="CriticaEditor" class="form-label"></label>
+        <textarea asp-for="CriticaEditor" class="form-control" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvar Filme</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

@@ -1,0 +1,47 @@
+@model Cine99.Models.Filme
+@{
+    ViewData["Title"] = Model.Nome;
+    var mediaStr = Model.Avaliacoes.Any()
+        ? Model.Avaliacoes.Average(a => a.Nota).ToString("0.0")
+        : "Sem avaliação";
+}
+<div class="row">
+    <div class="col-md-4">
+        @if (!string.IsNullOrEmpty(Model.ImagemUrl))
+        {
+            <img src="@Model.ImagemUrl" class="img-fluid rounded" />
+        }
+    </div>
+    <div class="col-md-8">
+        <h2>@Model.Nome</h2>
+        <p><strong>Diretor:</strong> @Model.Diretor</p>
+        <p><strong>Ano:</strong> @Model.AnoLancamento</p>
+        <p><strong>Nota média:</strong> ⭐ @mediaStr</p>
+        <p>@Model.Sinopse</p>
+        @if (!string.IsNullOrEmpty(Model.CriticaEditor))
+        {
+            <div class="alert alert-info">
+                <strong>Crítica do Editor:</strong> @Model.CriticaEditor
+            </div>
+        }
+        @if (User.Identity!.IsAuthenticated)
+        {
+            <a asp-action="Edit" asp-route-id="@Model.Id"
+               class="btn btn-warning">Editar</a>
+            <a asp-action="Delete" asp-route-id="@Model.Id"
+               class="btn btn-danger">Excluir</a>
+        }
+    </div>
+</div>
+<hr/>
+<h4>Avaliações dos Usuários</h4>
+@foreach (var av in Model.Avaliacoes)
+{
+    <div class="card mb-2">
+        <div class="card-body">
+            <span class="badge bg-warning text-dark">⭐ @av.Nota/10</span>
+            <p>@av.Comentario</p>
+            <small class="text-muted">@av.DataAvaliacao.ToShortDateString()</small>
+        </div>
+    </div>
+}
