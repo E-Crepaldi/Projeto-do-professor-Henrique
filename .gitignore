@@ -1,0 +1,12 @@
+# Pastas geradas automaticamente
+bin/
+obj/
+.vs/
+ 
+# Banco de dados local — cada pessoa tem o seu
+*.db
+*.db-shm
+*.db-wal
+ 
+# Pode conter chaves e segredos
+appsettings.Development.json
