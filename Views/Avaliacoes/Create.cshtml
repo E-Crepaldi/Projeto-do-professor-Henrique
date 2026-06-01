@@ -1,0 +1,22 @@
+@model Cine99.Models.Avaliacao
+@{
+    ViewData["Title"] = "Avaliar Filme";
+    var filme = ViewBag.Filme as Cine99.Models.Filme;
+}
+<h2>Avaliar: @filme?.Nome</h2>
+<form asp-action="Create">
+    <input type="hidden" asp-for="FilmeId" />
+    <div class="mb-3">
+        <label asp-for="Nota" class="form-label">Nota (1 a 10)</label>
+        <input asp-for="Nota" type="number" min="1" max="10"
+               class="form-control" style="width:120px" />
+        <span asp-validation-for="Nota" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Comentario" class="form-label">Comentário</label>
+        <textarea asp-for="Comentario" class="form-control" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Enviar Avaliação</button>
+    <a asp-controller="Filmes" asp-action="Details"
+       asp-route-id="@Model.FilmeId" class="btn btn-secondary">Cancelar</a>
+</form>

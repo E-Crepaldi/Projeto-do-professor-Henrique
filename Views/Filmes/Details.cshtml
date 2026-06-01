@@ -45,3 +45,11 @@
         </div>
     </div>
 }
+
+@if (User.Identity!.IsAuthenticated)
+{
+    <a asp-controller="Avaliacoes" asp-action="Create"
+       asp-route-filmeId="@Model.Id" class="btn btn-success mt-3">
+        ⭐ Avaliar este Filme
+    </a>
+}

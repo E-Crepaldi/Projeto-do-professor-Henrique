@@ -1,0 +1,13 @@
+@model Cine99.Models.Avaliacao
+@{ ViewData["Title"] = "Excluir Avaliação"; }
+<div class="alert alert-danger">
+    <h4>Excluir avaliação do filme @Model.Filme?.Nome?</h4>
+    <p>Nota: <strong>@Model.Nota/10</strong></p>
+    <p>@Model.Comentario</p>
+</div>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Sim, Excluir</button>
+    <a asp-controller="Filmes" asp-action="Details"
+       asp-route-id="@Model.FilmeId" class="btn btn-secondary">Cancelar</a>
+</form>
